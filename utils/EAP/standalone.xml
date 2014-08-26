@@ -126,57 +126,12 @@
                         <password>admin</password>
                     </security>
                 </datasource>
-                <datasource jndi-name="java:/accounts-ds" pool-name="h2" enabled="true" use-java-context="true">
-                    <connection-url>jdbc:h2:mem:accounts;INIT=RUNSCRIPT FROM '${jboss.home.dir}/teiidfiles/customer-schema.sql';</connection-url>
-                    <driver>h2</driver>
-                    <security>
-                        <user-name>sa</user-name>
-                        <password>sa</password>
-                    </security>
-                </datasource>
-                <datasource jndi-name="java:/webservice" pool-name="webservice" enabled="true">
-                    <connection-url>jdbc:teiid:webservice</connection-url>
-                    <driver>teiid</driver>
-                    <security>
-                        <user-name>user</user-name>
-                        <password>user</password>
-                    </security>
-                </datasource>
-                <datasource jndi-name="java:/DemoCustomer" pool-name="DemoCustomer" enabled="true">
-                    <connection-url>jdbc:teiid:DemoCustomer</connection-url>
-                    <driver>teiid</driver>
-                    <security>
-                        <user-name>user</user-name>
-                        <password>user</password>
-                    </security>
-                </datasource>
-                <datasource jndi-name="java:/CustomerVDB" pool-name="CustomerVDB" enabled="true">
-                    <connection-url>jdbc:teiid:CustomerVDB</connection-url>
-                    <driver>teiid</driver>
-                    <security>
-                        <user-name>user</user-name>
-                        <password>user</password>
-                    </security>
-                </datasource>
-                <datasource jta="true" jndi-name="java:jboss/datasources/DVDemoPostgres" pool-name="DVDemoPostgres" enabled="true" use-ccm="true">
-                    <connection-url>jdbc:postgresql://localhost:5432/zon</connection-url>
-                    <driver-class>org.postgresql.Driver</driver-class>
-                    <driver>postgresql-9.2-1003.jdbc4.jar</driver>
-                    <security>
-                        <user-name>dashboard</user-name>
-                        <password>dashboard</password>
-                    </security>
-                    <validation>
-                        <validate-on-match>false</validate-on-match>
-                        <background-validation>false</background-validation>
-                    </validation>
-                    <statement>
-                        <share-prepared-statements>false</share-prepared-statements>
-                    </statement>
-                </datasource>
-                <datasource jndi-name="java:/PREVIEW_a11482eb-7440-4712-9b3c-f6f0ce7af8a9_customerdemo_sources_CustomerERP" pool-name="PREVIEW_a11482eb-7440-4712-9b3c-f6f0ce7af8a9_customerdemo_sources_CustomerERP" enabled="true">
+                <datasource jndi-name="java:jboss/datasources/DVDemoPostgres" pool-name="DVDemoPostgres" enabled="true" use-ccm="false">
                     <connection-url>jdbc:postgresql://localhost:5432/zon</connection-url>
                     <driver>postgresql-9.2-1003.jdbc4.jar</driver>
+                    <pool>
+                        <max-pool-size>25</max-pool-size>
+                    </pool>
                     <security>
                         <user-name>dashboard</user-name>
                         <password>dashboard</password>
@@ -368,38 +323,10 @@
                         </connection-definition>
                     </connection-definitions>
                 </resource-adapter>
-                <resource-adapter id="wsQS">
-                    <module slot="main" id="org.jboss.teiid.resource-adapter.webservice"/>
-                    <connection-definitions>
-                        <connection-definition class-name="org.teiid.resource.adapter.ws.WSManagedConnectionFactory" jndi-name="java:/CustomerRESTWebSvcSource" enabled="true" use-java-context="true" pool-name="wsDS">
-                            <config-property name="EndPoint">
-                                http://localhost:8080/CustomerRESTWebSvc/MyRESTApplication/customerList
-                            </config-property>
-                        </connection-definition>
-                    </connection-definitions>
-                </resource-adapter>
-                <resource-adapter id="CustomerCRM">
-                    <module slot="main" id="org.jboss.teiid.resource-adapter.webservice"/>
-                    <transaction-support>NoTransaction</transaction-support>
-                    <connection-definitions>
-                        <connection-definition class-name="org.teiid.resource.adapter.ws.WSManagedConnectionFactory" jndi-name="java:/CustomerCRM" enabled="true" pool-name="CustomerCRM">
-                            <config-property name="SecurityType">
-                                None
-                            </config-property>
-                            <config-property name="EndPoint">
-                                http://localhost:8080/CustomerRESTWebSvc/MyRESTApplication/customerList
-                            </config-property>
-                        </connection-definition>
-                    </connection-definitions>
-                </resource-adapter>
                 <resource-adapter id="CustomerCRMREST">
                     <module slot="main" id="org.jboss.teiid.resource-adapter.webservice"/>
-                    <transaction-support>NoTransaction</transaction-support>
                     <connection-definitions>
-                        <connection-definition class-name="org.teiid.resource.adapter.ws.WSManagedConnectionFactory" jndi-name="java:/CustomerCRMREST" enabled="true" pool-name="CustomerCRMREST">
-                            <config-property name="SecurityType">
-                                None
-                            </config-property>
+                        <connection-definition class-name="org.teiid.resource.adapter.ws.WSManagedConnectionFactory" jndi-name="java:/CustomerCRMREST" enabled="true" use-java-context="true" pool-name="wsDS">
                             <config-property name="EndPoint">
                                 http://localhost:8080/CustomerRESTWebSvc/MyRESTApplication/customerList
                             </config-property>
@@ -583,21 +510,4 @@
         </outbound-socket-binding>
     </socket-binding-group>
 
-    <deployments>
-        <deployment name="PREVIEW_a11482eb-7440-4712-9b3c-f6f0ce7af8a9_customerdemo_views_CustomerViews.vdb" runtime-name="PREVIEW_a11482eb-7440-4712-9b3c-f6f0ce7af8a9_customerdemo_views_CustomerViews.vdb">
-            <content sha1="1edf5f45f4fd30af4b5a7fa06b6244e0decb1890"/>
-        </deployment>
-        <deployment name="PREVIEW_a11482eb-7440-4712-9b3c-f6f0ce7af8a9_customerdemo_sources_CustomerMktg.vdb" runtime-name="PREVIEW_a11482eb-7440-4712-9b3c-f6f0ce7af8a9_customerdemo_sources_CustomerMktg.vdb">
-            <content sha1="6784007906dc0f9c1e04dfe4e1a77c6c3d6bfb52"/>
-        </deployment>
-        <deployment name="PREVIEW_a11482eb-7440-4712-9b3c-f6f0ce7af8a9_customerdemo_sources_CustomerCRM.vdb" runtime-name="PREVIEW_a11482eb-7440-4712-9b3c-f6f0ce7af8a9_customerdemo_sources_CustomerCRM.vdb">
-            <content sha1="7b17d90aab00dd564b6fd18be1f7dfd6a2c82b92"/>
-        </deployment>
-        <deployment name="PREVIEW_a11482eb-7440-4712-9b3c-f6f0ce7af8a9_customerdemo_sources_CustomerERP.vdb" runtime-name="PREVIEW_a11482eb-7440-4712-9b3c-f6f0ce7af8a9_customerdemo_sources_CustomerERP.vdb">
-            <content sha1="9ddabb558e1009989414a9cbb2fa8446b6dcfc3b"/>
-        </deployment>
-        <deployment name="PREVIEW_a11482eb-7440-4712-9b3c-f6f0ce7af8a9_customerdemo_project.vdb" runtime-name="PREVIEW_a11482eb-7440-4712-9b3c-f6f0ce7af8a9_customerdemo_project.vdb">
-            <content sha1="79c016efe025646fe9834c42b48a763a8f1419fe"/>
-        </deployment>
-    </deployments>
 </server>

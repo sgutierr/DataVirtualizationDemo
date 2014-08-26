@@ -1,0 +1,12 @@
+/subsystem=resource-adapters/resource-adapter=CustomerCRMREST:add(module=org.jboss.teiid.resource-adapter.webservice)
+/subsystem=resource-adapters/resource-adapter=CustomerCRMREST/connection-definitions=wsDS:add(jndi-name=java:/CustomerCRMREST, class-name=org.teiid.resource.adapter.ws.WSManagedConnectionFactory, enabled=true, use-java-context=true)
+/subsystem=resource-adapters/resource-adapter=CustomerCRMREST/connection-definitions=wsDS/config-properties=EndPoint:add(value=http://localhost:8080/CustomerRESTWebSvc/MyRESTApplication/customerList)
+/subsystem=resource-adapters/resource-adapter=CustomerCRMREST:activate
+/subsystem=resource-adapters/resource-adapter=fileQS:add(module=org.jboss.teiid.resource-adapter.file)
+/subsystem=resource-adapters/resource-adapter=fileQS/connection-definitions=fileDS:add(jndi-name=java:/marketdata-file, class-name=org.teiid.resource.adapter.file.FileManagedConnectionFactory, enabled=true, use-java-context=true)
+/subsystem=resource-adapters/resource-adapter=fileQS/connection-definitions=fileDS/config-properties=ParentDirectory:add(value=${jboss.home.dir}/teiidfiles/data/)
+/subsystem=resource-adapters/resource-adapter=fileQS/connection-definitions=fileDS/config-properties=AllowParentPaths:add(value=true)
+/subsystem=resource-adapters/resource-adapter=fileQS:activate
+/subsystem=datasources/data-source=DVDemoPostgres:add(driver-name=postgresql-9.2-1003.jdbc4.jar,connection-url=jdbc:postgresql://localhost:5432/zon,jndi-name=java:jboss/datasources/DVDemoPostgres,user-name=dashboard,password=dashboard,use-ccm=false,max-pool-size=25)
+/subsystem=datasources/data-source=DVDemoPostgres:enable
+
