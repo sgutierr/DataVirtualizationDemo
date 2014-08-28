@@ -62,8 +62,8 @@ Installation process:
    cd teiid-dashboard-builder.war
    unzip teiid-dashboard-builder2.war
 
-    cp -r $APP/utils/Dashbuilder/images dv/standalone/deployments/teiid-dashboard-builder.war/images
-    cp -r $APP/utils/Dashbuilder/envelopes dv/standalone/deployments/teiid-dashboard-builder.war/envelopes
+    cp -r $APP/utils/Dashbuilder/images dv/standalone/deployments/teiid-dashboard-builder.war
+    cp -r $APP/utils/Dashbuilder/envelopes dv/standalone/deployments/teiid-dashboard-builder.war	
 
 6- Virtual Database 
    Copy from {source}/CustomerVDB.vdb to {EAP_HOME}/standalone/deployments/
