@@ -29,21 +29,21 @@
     </diagram>
     <diagram xmi:uuid="mmuuid:4b1fc952-bd56-4b8f-94d1-7b16fde12a6d" type="transformationDiagramType" target="mmuuid/355c4631-02fe-4698-88e7-2bceaa65ec39">
       <diagramEntity xmi:uuid="mmuuid:8d894f59-f88c-4ac9-9e4c-125c4eedde12" modelObject="mmuuid/355c4631-02fe-4698-88e7-2bceaa65ec39" xPosition="30" yPosition="50"/>
-      <diagramEntity xmi:uuid="mmuuid:9ddc68f4-c118-4867-91a5-ac611e6f8350" name="T" modelObject="mmuuid/ba79205a-f194-43f3-a3e7-d483ae80466a" xPosition="263" yPosition="50"/>
-      <diagramEntity xmi:uuid="mmuuid:a80ad96b-dfb7-4ac7-9acc-81f68be66a4c" xPosition="313" yPosition="50">
+      <diagramEntity xmi:uuid="mmuuid:9ddc68f4-c118-4867-91a5-ac611e6f8350" name="T" modelObject="mmuuid/ba79205a-f194-43f3-a3e7-d483ae80466a" xPosition="259" yPosition="50"/>
+      <diagramEntity xmi:uuid="mmuuid:a80ad96b-dfb7-4ac7-9acc-81f68be66a4c" xPosition="309" yPosition="50">
         <modelObject href="../sources/CustomerERP.xmi#mmuuid/92aa1d5f-b4a5-438c-a037-f4f9407671fc"/>
       </diagramEntity>
-      <diagramEntity xmi:uuid="mmuuid:34f6463a-21ad-4938-9d73-84abcfc05570" xPosition="556" yPosition="50">
+      <diagramEntity xmi:uuid="mmuuid:34f6463a-21ad-4938-9d73-84abcfc05570" xPosition="552" yPosition="50">
         <modelObject href="../sources/CustomerERP.xmi#mmuuid/d4fde5fa-e9ed-4ef1-a741-d40319de3567"/>
       </diagramEntity>
-      <diagramEntity xmi:uuid="mmuuid:bede38b9-2e28-4056-8723-e3f9349c779e" xPosition="782" yPosition="50">
+      <diagramEntity xmi:uuid="mmuuid:bede38b9-2e28-4056-8723-e3f9349c779e" xPosition="778" yPosition="50">
         <modelObject href="../sources/CustomerERP.xmi#mmuuid/866b6457-39fc-478a-83b1-7b9ed7c3f83a"/>
       </diagramEntity>
-      <diagramEntity xmi:uuid="mmuuid:753b6cd1-fbcc-470a-8901-b8118b4919f3" xPosition="1035" yPosition="50">
+      <diagramEntity xmi:uuid="mmuuid:753b6cd1-fbcc-470a-8901-b8118b4919f3" xPosition="1031" yPosition="50">
         <modelObject href="../sources/CustomerERP.xmi#mmuuid/6e87c4f5-c118-42cc-883e-7c8322a9e5fd"/>
       </diagramEntity>
-      <diagramEntity xmi:uuid="mmuuid:89ec757f-3aa8-4b93-b473-6bff2399850a" modelObject="mmuuid/17c6d6fd-b74f-419b-81d4-cbee32f3f74e" xPosition="1253" yPosition="50"/>
-      <diagramEntity xmi:uuid="mmuuid:de41a0bc-8491-4c59-8e88-f51ba7adb384" modelObject="mmuuid/41cf4066-d694-4a7b-a5df-1588e7cf059b" xPosition="1476" yPosition="50"/>
+      <diagramEntity xmi:uuid="mmuuid:89ec757f-3aa8-4b93-b473-6bff2399850a" modelObject="mmuuid/17c6d6fd-b74f-419b-81d4-cbee32f3f74e" xPosition="1249" yPosition="50"/>
+      <diagramEntity xmi:uuid="mmuuid:de41a0bc-8491-4c59-8e88-f51ba7adb384" modelObject="mmuuid/41cf4066-d694-4a7b-a5df-1588e7cf059b" xPosition="1472" yPosition="50"/>
     </diagram>
   </diagram:DiagramContainer>
   <mmcore:AnnotationContainer xmi:uuid="mmuuid:9f1adf49-47dc-4d2d-99a0-49988226b9c3">
@@ -494,7 +494,7 @@
   <transformation:TransformationContainer xmi:uuid="mmuuid:9601759c-2910-4d94-b902-2c65f7f0a4eb">
     <transformationMappings xsi:type="transformation:SqlTransformationMappingRoot" xmi:uuid="mmuuid:952bd4d1-d1d9-4941-a52b-a85684fdcace" outputs="mmuuid/41cf4066-d694-4a7b-a5df-1588e7cf059b" target="mmuuid/41cf4066-d694-4a7b-a5df-1588e7cf059b">
       <helper xsi:type="transformation:SqlTransformation" xmi:uuid="mmuuid:8526ce93-b8df-4690-a01f-10c664e299cb">
-        <nested xsi:type="transformation:SqlTransformation" xmi:uuid="mmuuid:5585dc0c-d2cf-4273-9701-92d36fa7d177" selectSql=" SELECT&#xa;&#x9;&#x9;A.customernumber, A.customername, A.contactlastname, A.contactfirstname, A.phone, A.addressline1, A.addressline2, A.city, A.state, A.postalcode, A.country, A.salesrepemployeenumber, A.creditlimit&#xa;&#x9;FROM&#xa;&#x9;&#x9;(EXEC CustomerCRM.invokeHttp('GET', null, 'http://jbossdv-eseguti.rhcloud.com/CustomerRESTWebSvc/MyRESTApplication/customerList', 'TRUE')) AS f, XMLTABLE('/customers/customer' PASSING XMLPARSE(DOCUMENT f.result) COLUMNS customernumber string PATH 'customernumber/text()', customername string PATH 'customername/text()', contactlastname string PATH 'contactlastname/text()', contactfirstname string PATH 'contactfirstname/text()', phone string PATH 'phone/text()', addressline1 string PATH 'addressline1/text()', addressline2 string PATH 'addressline2/text()', state string PATH 'state/text()', city string PATH 'city/text()', postalcode string PATH 'postalcode/text()', country string PATH 'country/text()', salesrepemployeenumber string PATH 'salesrepemployeenumber/text()', creditlimit string PATH 'creditlimit/text()') AS A;  "/>
+        <nested xsi:type="transformation:SqlTransformation" xmi:uuid="mmuuid:5585dc0c-d2cf-4273-9701-92d36fa7d177" selectSql="SELECT&#xa;&#x9;&#x9;A.customernumber, A.customername, A.contactlastname, A.contactfirstname, A.phone, A.addressline1, A.addressline2, A.city, A.state, A.postalcode, A.country, A.salesrepemployeenumber, A.creditlimit&#xa;&#x9;FROM&#xa;&#x9;&#x9;(EXEC CustomerCRM.invokeHttp('GET', null, 'http://jbossdv-eseguti.rhcloud.com/CustomerRESTWebSvc/MyRESTApplication/customerList', 'TRUE')) AS f, XMLTABLE('/customers/customer' PASSING XMLPARSE(DOCUMENT f.result) COLUMNS customernumber string PATH 'customernumber/text()', customername string PATH 'customername/text()', contactlastname string PATH 'contactlastname/text()', contactfirstname string PATH 'contactfirstname/text()', phone string PATH 'phone/text()', addressline1 string PATH 'addressline1/text()', addressline2 string PATH 'addressline2/text()', state string PATH 'state/text()', city string PATH 'city/text()', postalcode string PATH 'postalcode/text()', country string PATH 'country/text()', salesrepemployeenumber string PATH 'salesrepemployeenumber/text()', creditlimit string PATH 'creditlimit/text()') AS A"/>
         <aliases xmi:uuid="mmuuid:05edf338-4dcb-4597-9b59-0a64f55ba19f" alias="invokeHttp">
           <aliasedObject href="../sources/CustomerCRM.xmi#mmuuid/e6bbaa45-7ff3-41e0-9687-60676650d1c4"/>
         </aliases>
@@ -587,12 +587,13 @@
     </transformationMappings>
   </transformation:TransformationContainer>
   <relational:BaseTable xmi:uuid="mmuuid:17c6d6fd-b74f-419b-81d4-cbee32f3f74e" name="MKTGDisccounts">
-    <columns xmi:uuid="mmuuid:6c802ab2-579d-4111-bc88-4846eb27f843" name="customer_id" length="10">
+    <columns xmi:uuid="mmuuid:6c802ab2-579d-4111-bc88-4846eb27f843" name="customer_id" nativeType="string(10)" length="10" nullable="NO_NULLS" uniqueKeys="mmuuid/bd8c1b19-74ae-4212-82ff-4a1dcacd6e9c">
       <type href="http://www.w3.org/2001/XMLSchema#string"/>
     </columns>
-    <columns xmi:uuid="mmuuid:687c7692-b838-4024-8453-bdb441e149e0" name="price">
+    <columns xmi:uuid="mmuuid:687c7692-b838-4024-8453-bdb441e149e0" name="price" precision="2">
       <type href="http://www.metamatrix.com/metamodels/SimpleDatatypes-instance#bigdecimal"/>
     </columns>
+    <primaryKey xmi:uuid="mmuuid:bd8c1b19-74ae-4212-82ff-4a1dcacd6e9c" name="customer_id" columns="mmuuid/6c802ab2-579d-4111-bc88-4846eb27f843"/>
   </relational:BaseTable>
   <relational:BaseTable xmi:uuid="mmuuid:355c4631-02fe-4698-88e7-2bceaa65ec39" name="ERPOrders">
     <columns xmi:uuid="mmuuid:d9f0db76-94be-4940-95d0-5d938c65d04d" name="firstname" length="64">
@@ -619,20 +620,21 @@
     <columns xmi:uuid="mmuuid:27ca1734-0d83-477b-8baa-4428348e3537" name="phone" length="15">
       <type href="http://www.w3.org/2001/XMLSchema#string"/>
     </columns>
-    <columns xmi:uuid="mmuuid:d70e5653-914a-4f73-9f72-604894c6178c" name="purchase_date" fixedLength="true" precision="29" scale="6" nullable="NO_NULLS" caseSensitive="false" searchability="ALL_EXCEPT_LIKE">
+    <columns xmi:uuid="mmuuid:d70e5653-914a-4f73-9f72-604894c6178c" name="purchase_date" fixedLength="true" precision="29" scale="6" nullable="NO_NULLS" caseSensitive="false" searchability="ALL_EXCEPT_LIKE" uniqueKeys="mmuuid/a09d0197-8e1e-4b88-b791-eb12f4e7f615">
       <type href="http://www.metamatrix.com/metamodels/SimpleDatatypes-instance#timestamp"/>
     </columns>
     <columns xmi:uuid="mmuuid:ac2609a9-0960-4dd7-ada8-b8adb4761d22" name="shares_count" fixedLength="true" precision="10" caseSensitive="false" searchability="ALL_EXCEPT_LIKE">
       <type href="http://www.w3.org/2001/XMLSchema#int"/>
     </columns>
-    <columns xmi:uuid="mmuuid:06f5b263-5c66-464e-b4ec-0a10a7c2cb03" name="ssn" length="10" fixedLength="true" nullable="NO_NULLS">
+    <columns xmi:uuid="mmuuid:06f5b263-5c66-464e-b4ec-0a10a7c2cb03" name="ssn" length="10" fixedLength="true" nullable="NO_NULLS" uniqueKeys="mmuuid/a09d0197-8e1e-4b88-b791-eb12f4e7f615">
       <type href="http://www.w3.org/2001/XMLSchema#string"/>
     </columns>
-    <columns xmi:uuid="mmuuid:b22c8dcc-e5fa-41e2-9a8b-54e98e4ffe4f" name="price">
+    <columns xmi:uuid="mmuuid:b22c8dcc-e5fa-41e2-9a8b-54e98e4ffe4f" name="price" precision="2" maximumValue="">
       <type href="http://www.metamatrix.com/metamodels/SimpleDatatypes-instance#bigdecimal"/>
     </columns>
     <columns xmi:uuid="mmuuid:30adad9a-6af8-4bc4-bc06-66bccaf6332e" name="customername" length="10">
       <type href="http://www.w3.org/2001/XMLSchema#string"/>
     </columns>
+    <primaryKey xmi:uuid="mmuuid:a09d0197-8e1e-4b88-b791-eb12f4e7f615" name="customerID" columns="mmuuid/06f5b263-5c66-464e-b4ec-0a10a7c2cb03 mmuuid/d70e5653-914a-4f73-9f72-604894c6178c"/>
   </relational:BaseTable>
 </xmi:XMI>
